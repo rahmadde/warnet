@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Makanan extends Model
 {
     use HasFactory;
+
+    /**
+     * fillable
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'id_pemesanan',
+        'nm_makanan',
+        'id_member',
+        'jumlah',
+        'tgl_pemesanan',
+    ];
 }
