@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo: Kanban - Apps | Vuexy - Bootstrap Dashboard PRO</title>
+    <title>Walet Net</title>
 
     <meta name="description" content="" />
 
@@ -121,7 +121,7 @@
           <ul class="menu-inner py-1">
             <!-- Dashboards -->
             <li class="menu-item">
-              <a href="app-email.html" class="menu-link">
+              <a href="" class="menu-link">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M13 9V3h8v6zM3 13V3h8v10zm10 8V11h8v10zM3 21v-6h8v6zm2-10h4V5H5zm10 8h4v-6h-4zm0-12h4V5h-4zM5 19h4v-2H5zm4-2"/></svg>
                 <div>Dashboard</div>
               </a>
@@ -192,7 +192,7 @@
                 <div class="card">
                   <div class="card-body">
                     <h3>Halo Operator, selamat datang di website warnet.</h3>
-                    <p>WaletNet adalah warnet modern yang menyediakan layanan lengkap mulai dari booking PC dengan berbagai pilihan spesifikasi (Standard, Premium, dan VIP), pemesanan makanan dan minuman langsung dari tempat duduk, sistem pembelian billing fleksibel per jam dengan paket hemat, hingga keanggotaan eksklusif yang memberikan berbagai benefit seperti diskon, prioritas booking, dan reward poin, semua didukung dengan fasilitas lengkap termasuk internet high-speed, ruang ber-AC, kursi gaming ergonomis, serta layanan 24 jam untuk kenyamanan maximal para pelanggan.</p>
+                    <p>WaletNet adalah warnet modern yang menyediakan layanan lengkap mulai dari booking PC dengan berbagai pilihan spesifikasi (Standard, Premium, dan VIP), pemesanan makanan dan minuman langsung dari tempat duduk, sistem pembelian billing fleksibel per jam dengan paket hemat, hingga keanggotaan eksklusif yang memberikan berbagai benefit seperti diskon, prioritas booking, dan reward poin, semua didukung dengan fasilitas lengkap termasuk internet high-speed, ruang ber-AC, kursi gaming ergonomis, serta layanan 24 jam untuk kenyamanan maksimal para pelanggan.</p>
                   </div>
                 </div>
               </div>
