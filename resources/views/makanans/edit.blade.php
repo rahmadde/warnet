@@ -191,45 +191,80 @@
               <div class="app-kanban">
                 <div class="card">
                   <div class="card-header">
-                    <h1>Makanan</h1>
-                    <a href="{{ route('makanans.create') }}" class="btn btn-md btn-success mb-3">Tambah Data</a>
+                    <h1>Edit Data Makanan</h1>
                   </div>
                   <div class="card-body">
-                    <table class="table table-bordered">
-                      <thead>
-                        <tr>
-                          <th scope="col">Id Pemesanan</th>
-                          <th scope="col">Nama Makanan</th>
-                          <th scope="col">Id Member</th>
-                          <th scope="col">Jumlah</th>
-                          <th scope="col">Tanggal Pemesanan</th>
-                          <th scope="col">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        @forelse ($makanans as $makanan)
-                          <tr>
-                              <td>{{ $makanan->id_pemesanan }}</td>
-                              <td>{{ $makanan->nm_makanan }}</td>
-                              <td>{{ $makanan->id_member }}</td>
-                              <td>{{ $makanan->jumlah }}</td>
-                              <td>{{ $makanan->tgl_pemesanan }}</td>
-                              <td class="text-center">
-                                  <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('makanans.destroy', $makanan->id) }}" method="POST">
-                                      <a href="{{ route('makanans.edit', $makanan->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
-                                  </form>
-                              </td>
-                          </tr>
-                        @empty
-                            <div class="alert alert-danger">
-                                Data Makanan Belum Ada.
+                    <form action="{{ route('makanans.update', $makanan->id) }}" method="POST">
+                        
+                            @csrf
+                            @method('PUT')
+                            
+                            <div class="form-group m-3">
+                                <label class="font-weight-bold">Id Pemesanan</label>
+                                <input type="text" class="form-control @error('id_pemesanan') is-invalid @enderror" name="id_pemesanan" value="{{ old('id_pemesanan', $makanan->id_pemesanan) }}" placeholder="Masukkan Id Pemesanan">
+                            
+                                <!-- error message untuk title -->
+                                @error('id_pemesanan')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                        @endforelse
-                      </tbody>
-                    </table>
+
+                            <div class="form-group m-3">
+                                <label class="font-weight-bold">Nama Makanan</label>
+                                <input type="text" class="form-control @error('nm_makanan') is-invalid @enderror" name="nm_makanan" value="{{ old('nm_makanan', $makanan->nm_makanan) }}" placeholder="Masukkan Nama Makanan">
+                            
+                                <!-- error message untuk title -->
+                                @error('nm_makanan')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group m-3">
+                                <label class="font-weight-bold">Id Member</label>
+                                <input type="text" class="form-control @error('id_member') is-invalid @enderror" name="id_member" value="{{ old('id_member', $makanan->id_member) }}" placeholder="Masukkan Id Member">
+                            
+                                <!-- error message untuk title -->
+                                @error('id_member')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group m-3">
+                                <label class="font-weight-bold">Jumlah</label>
+                                <input type="number" class="form-control @error('jumlah') is-invalid @enderror" name="jumlah" value="{{ old('jumlah', $makanan->jumlah) }}" placeholder="Masukkan Jumlah">
+                            
+                                <!-- error message untuk title -->
+                                @error('jumlah')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="form-group m-3">
+                                <label class="font-weight-bold">Tanggal Pemesanan</label>
+                                <input type="date" class="form-control @error('tgl_pemesanan') is-invalid @enderror" name="tgl_pemesanan" value="{{ old('tgl_pemesanan', $makanan->tgl_pemesanan) }}" placeholder="Masukkan Tanggal Pemesanan">
+                            
+                                <!-- error message untuk title -->
+                                @error('tgl_pemesanan')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
+
+                            <div class="m-3">
+                              <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
+                              <button type="reset" class="btn btn-md btn-danger">RESET</button>
+                            </div>
+
+                        </form> 
                   </div>
                 </div>
               </div>
