@@ -29,3 +29,5 @@ Route::get('/cektemplate', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('/makanans', \App\Http\Controllers\MakananController::class);

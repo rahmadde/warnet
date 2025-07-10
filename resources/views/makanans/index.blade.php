@@ -190,9 +190,46 @@
             <div class="container-xxl flex-grow-1 container-p-y">
               <div class="app-kanban">
                 <div class="card">
+                  <div class="card-header">
+                    <h1>Makanan</h1>
+                    <a href="{{ route('makanans.create') }}" class="btn btn-md btn-success mb-3">Tambah Data</a>
+                  </div>
                   <div class="card-body">
-                    <h3>Halo Operator, selamat datang di website warnet.</h3>
-                    <p>WaletNet adalah warnet modern yang menyediakan layanan lengkap mulai dari booking PC dengan berbagai pilihan spesifikasi (Standard, Premium, dan VIP), pemesanan makanan dan minuman langsung dari tempat duduk, sistem pembelian billing fleksibel per jam dengan paket hemat, hingga keanggotaan eksklusif yang memberikan berbagai benefit seperti diskon, prioritas booking, dan reward poin, semua didukung dengan fasilitas lengkap termasuk internet high-speed, ruang ber-AC, kursi gaming ergonomis, serta layanan 24 jam untuk kenyamanan maksimal para pelanggan.</p>
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Id Pemesanan</th>
+                          <th scope="col">Nama Makanan</th>
+                          <th scope="col">Id Member</th>
+                          <th scope="col">Jumlah</th>
+                          <th scope="col">Tanggal Pemesanan</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @forelse ($makanans as $makanan)
+                          <tr>
+                              <td>{{ $makanan->id_pemesanan }}</td>
+                              <td>{{ $makanan->nm_makanan }}</td>
+                              <td>{{ $makanan->id_member }}</td>
+                              <td>{{ $makanan->jumlah }}</td>
+                              <td>{{ $makanan->tgl_pemesanan }}</td>
+                              <td class="text-center">
+                                  <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('makanans.destroy', $makanan->id) }}" method="POST">
+                                      <a href="{{ route('makanans.edit', $makanan->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                  </form>
+                              </td>
+                          </tr>
+                        @empty
+                            <div class="alert alert-danger">
+                                Data Makanan Belum Ada.
+                            </div>
+                        @endforelse
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
