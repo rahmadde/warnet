@@ -100,4 +100,22 @@ class MakananController extends Controller
         //redirect to index
         return redirect()->route('makanans.index')->with(['success' => 'Data Berhasil Diubah!']);
     }
+
+    /**
+     * destroy
+     *
+     * @param  mixed $post
+     * @return void
+     */
+    public function destroy($id): RedirectResponse
+    {
+        //get by ID
+        $makanan = Makanan::findOrFail($id);
+
+        //delete
+        $makanan->delete();
+
+        //redirect to index
+        return redirect()->route('makanans.index')->with(['success' => 'Data Berhasil Dihapus!']);
+    }
 }
