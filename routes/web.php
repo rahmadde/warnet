@@ -33,3 +33,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('/makanans', \App\Http\Controllers\MakananController::class);
 
 Route::resource('/bilings', \App\Http\Controllers\BilingController::class);
+
+Route::resource('/bookings', \App\Http\Controllers\BookingController::class);

@@ -191,19 +191,20 @@
               <div class="app-kanban">
                 <div class="card">
                   <div class="card-header">
-                    <h1>Tambah Data Biling</h1>
+                    <h1>Edit Data Booking</h1>
                   </div>
                   <div class="card-body">
-                    <form action="{{ route('bilings.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('bookings.update', $booking->id) }}" method="POST">
                         
                             @csrf
-
+                            @method('PUT')
+                            
                             <div class="form-group m-3">
-                                <label class="font-weight-bold">Kode Biling</label>
-                                <input type="text" class="form-control @error('kd_biling') is-invalid @enderror" name="kd_biling" value="{{ old('kd_biling') }}" placeholder="Masukkan Kode Biling">
+                                <label class="font-weight-bold">Kode Booking</label>
+                                <input type="text" class="form-control @error('kd_booking') is-invalid @enderror" name="kd_booking" value="{{ old('kd_booking', $booking->kd_booking) }}" placeholder="Masukkan Kode Booking">
                             
                                 <!-- error message untuk title -->
-                                @error('kd_biling')
+                                @error('kd_booking')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -211,11 +212,11 @@
                             </div>
 
                             <div class="form-group m-3">
-                                <label class="font-weight-bold">Waktu Biling /Jam</label>
-                                <input type="number" class="form-control @error('waktu_biling') is-invalid @enderror" name="waktu_biling" value="{{ old('waktu_biling') }}" placeholder="Masukkan Waktu Biling /Jam">
+                                <label class="font-weight-bold">No PC</label>
+                                <input type="number" class="form-control @error('no_pc') is-invalid @enderror" name="no_pc" value="{{ old('no_pc', $booking->no_pc) }}" placeholder="Masukkan No PC">
                             
                                 <!-- error message untuk title -->
-                                @error('waktu_biling')
+                                @error('no_pc')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -224,7 +225,7 @@
 
                             <div class="form-group m-3">
                                 <label class="font-weight-bold">Id Member</label>
-                                <input type="text" class="form-control @error('id_member') is-invalid @enderror" name="id_member" value="{{ old('id_member') }}" placeholder="Masukkan Id Member">
+                                <input type="text" class="form-control @error('id_member') is-invalid @enderror" name="id_member" value="{{ old('id_member', $booking->id_member) }}" placeholder="Masukkan Id Member">
                             
                                 <!-- error message untuk title -->
                                 @error('id_member')
@@ -235,8 +236,8 @@
                             </div>
 
                             <div class="form-group m-3">
-                                <label class="font-weight-bold">Tanggal Pembelian</label>
-                                <input type="date" class="form-control @error('tgl_pembelian') is-invalid @enderror" name="tgl_pembelian" value="{{ old('tgl_pembelian') }}" placeholder="Masukkan Tanggal Pembelain">
+                                <label class="font-weight-bold">Tanggal Booking</label>
+                                <input type="date" class="form-control @error('tgl_booking') is-invalid @enderror" name="tgl_booking" value="{{ old('tgl_booking', $booking->tgl_booking) }}" placeholder="Masukkan Tanggal Booking">
                             
                                 <!-- error message untuk title -->
                                 @error('tgl_pembelian')

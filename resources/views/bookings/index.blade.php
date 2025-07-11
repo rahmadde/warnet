@@ -191,67 +191,43 @@
               <div class="app-kanban">
                 <div class="card">
                   <div class="card-header">
-                    <h1>Tambah Data Biling</h1>
+                    <h1>Booking</h1>
+                    <a href="{{ route('bookings.create') }}" class="btn btn-md btn-success mb-3">Tambah Data</a>
                   </div>
                   <div class="card-body">
-                    <form action="{{ route('bilings.store') }}" method="POST" enctype="multipart/form-data">
-                        
-                            @csrf
-
-                            <div class="form-group m-3">
-                                <label class="font-weight-bold">Kode Biling</label>
-                                <input type="text" class="form-control @error('kd_biling') is-invalid @enderror" name="kd_biling" value="{{ old('kd_biling') }}" placeholder="Masukkan Kode Biling">
-                            
-                                <!-- error message untuk title -->
-                                @error('kd_biling')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">Kode Booking</th>
+                          <th scope="col">No PC</th>
+                          <th scope="col">Id Member</th>
+                          <th scope="col">Tanggal Booking</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        @forelse ($bookings as $booking)
+                          <tr>
+                              <td>{{ $booking->kd_booking }}</td>
+                              <td>{{ $booking->no_pc }}</td>
+                              <td>{{ $booking->id_member }}</td>
+                              <td>{{ $booking->tgl_booking }}</td>
+                              <td class="text-center">
+                                  <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('bookings.destroy', $booking->id) }}" method="POST">
+                                      <a href="{{ route('bookings.edit', $booking->id) }}" class="btn btn-sm btn-primary"><i class="fa-solid fa-pen-to-square"></i></a>
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-sm btn-danger"><i class="fa-solid fa-trash"></i></button>
+                                  </form>
+                              </td>
+                          </tr>
+                        @empty
+                            <div class="alert alert-danger">
+                                Data Booking Belum Ada.
                             </div>
-
-                            <div class="form-group m-3">
-                                <label class="font-weight-bold">Waktu Biling /Jam</label>
-                                <input type="number" class="form-control @error('waktu_biling') is-invalid @enderror" name="waktu_biling" value="{{ old('waktu_biling') }}" placeholder="Masukkan Waktu Biling /Jam">
-                            
-                                <!-- error message untuk title -->
-                                @error('waktu_biling')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group m-3">
-                                <label class="font-weight-bold">Id Member</label>
-                                <input type="text" class="form-control @error('id_member') is-invalid @enderror" name="id_member" value="{{ old('id_member') }}" placeholder="Masukkan Id Member">
-                            
-                                <!-- error message untuk title -->
-                                @error('id_member')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group m-3">
-                                <label class="font-weight-bold">Tanggal Pembelian</label>
-                                <input type="date" class="form-control @error('tgl_pembelian') is-invalid @enderror" name="tgl_pembelian" value="{{ old('tgl_pembelian') }}" placeholder="Masukkan Tanggal Pembelain">
-                            
-                                <!-- error message untuk title -->
-                                @error('tgl_pembelian')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="m-3">
-                              <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
-                              <button type="reset" class="btn btn-md btn-danger">RESET</button>
-                            </div>
-
-                        </form> 
+                        @endforelse
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
