@@ -194,6 +194,35 @@
                     <h3>Halo Operator, selamat datang di website warnet.</h3>
                     <p>WaletNet adalah warnet modern yang menyediakan layanan lengkap mulai dari booking PC dengan berbagai pilihan spesifikasi (Standard, Premium, dan VIP), pemesanan makanan dan minuman langsung dari tempat duduk, sistem pembelian billing fleksibel per jam dengan paket hemat, hingga keanggotaan eksklusif yang memberikan berbagai benefit seperti diskon, prioritas booking, dan reward poin, semua didukung dengan fasilitas lengkap termasuk internet high-speed, ruang ber-AC, kursi gaming ergonomis, serta layanan 24 jam untuk kenyamanan maksimal para pelanggan.</p>
                   </div>
+                  <div class="container">
+                    <div class="row text-center">
+
+                        <div class="col-md-3 mb-4">
+                            <a href="/makanans" class="btn btn-primary w-100 py-4 text-white">
+                                Pesan Makanan
+                            </a>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <a href="/bilings" class="btn btn-success w-100 py-4">
+                                Beli Biling
+                            </a>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <a href="/bookings" class="btn btn-warning w-100 py-4">
+                                Booking PC
+                            </a>
+                        </div>
+
+                        <div class="col-md-3 mb-4">
+                            <a href="/members" class="btn btn-info w-100 py-4">
+                                Member
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
                 </div>
               </div>
             </div>
