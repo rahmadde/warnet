@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //import Model
 use App\Models\Booking;
 
+use App\Models\Member;
+
 //return type View
 use Illuminate\View\View;
 
@@ -23,7 +25,7 @@ class BookingController extends Controller
     public function index(): View
     {
         //get posts
-        $bookings = Booking::latest()->paginate(10);
+        $bookings = Booking::with('member')->latest()->paginate(10);
 
         //render view with posts
         return view('bookings.index', compact('bookings'));
@@ -36,7 +38,8 @@ class BookingController extends Controller
      */
     public function create(): View
     {
-        return view('bookings.create');
+        $members = Member::all();
+        return view('bookings.create', compact('members'));
     }
 
     /**
@@ -70,9 +73,10 @@ class BookingController extends Controller
     {
         //get post by ID
         $booking = Booking::findOrFail($id);
+        $members = Member::all();
 
         //render view with post
-        return view('bookings.edit', compact('booking'));
+        return view('bookings.edit', compact('booking','members'));
     }
 
     /**

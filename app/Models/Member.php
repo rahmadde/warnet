@@ -22,7 +22,12 @@ class Member extends Model
     ];
 
     public function bilings()
-{
-    return $this->hasMany(Biling::class, 'id_member', 'id_member');
-}
+    {
+        return $this->hasMany(Biling::class, 'id_member', 'id_member');
+    }
+    
+    public function bookings()
+    {
+        return $this->hasMany(Biling::class, 'id_member', 'id_member');
+    }
 }

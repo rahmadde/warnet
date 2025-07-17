@@ -224,7 +224,7 @@
                             </div>
 
                             <div class="form-group m-3">
-                                <label class="font-weight-bold">Id Member</label>
+                                <label class="font-weight-bold">ID Member</label>
                                 <select name="id_member" class="form-control @error('id_member') is-invalid @enderror" required>
                                   <option value="">-- Pilih Member --</option>
                                   @foreach ($members as $member)

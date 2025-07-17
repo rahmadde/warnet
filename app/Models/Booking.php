@@ -20,4 +20,9 @@ class Booking extends Model
         'id_member',
         'tgl_booking',
     ];
+
+    public function member()
+{
+    return $this->belongsTo(Member::class, 'id_member', 'id_member');
+}
 }
