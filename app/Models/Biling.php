@@ -20,4 +20,9 @@ class Biling extends Model
         'id_member',
         'tgl_pembelian',
     ];
+
+    public function member()
+{
+    return $this->belongsTo(Member::class, 'id_member', 'id_member');
+}
 }

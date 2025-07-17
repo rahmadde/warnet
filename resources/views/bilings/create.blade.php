@@ -223,16 +223,23 @@
                             </div>
 
                             <div class="form-group m-3">
-                                <label class="font-weight-bold">Id Member</label>
-                                <input type="text" class="form-control @error('id_member') is-invalid @enderror" name="id_member" value="{{ old('id_member') }}" placeholder="Masukkan Id Member">
-                            
-                                <!-- error message untuk title -->
-                                @error('id_member')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
+                              <label class="font-weight-bold">Pilih Member</label>
+                              <select name="id_member" class="form-control @error('id_member') is-invalid @enderror" required>
+                                  <option value="">-- Pilih Member --</option>
+                                  @foreach ($members as $member)
+                                      <option value="{{ $member->id_member }}" {{ old('id_member') == $member->id_member ? 'selected' : '' }}>
+                                          {{ $member->nm_member }} (ID: {{ $member->id_member }})
+                                      </option>
+                                  @endforeach
+                              </select>
+
+                              @error('id_member')
+                                  <div class="alert alert-danger mt-2">
+                                      {{ $message }}
+                                  </div>
+                              @enderror
+                          </div>
+
 
                             <div class="form-group m-3">
                                 <label class="font-weight-bold">Tanggal Pembelian</label>

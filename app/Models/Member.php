@@ -20,4 +20,9 @@ class Member extends Model
         'no_hp',
         'password',
     ];
+
+    public function bilings()
+{
+    return $this->hasMany(Biling::class, 'id_member', 'id_member');
+}
 }

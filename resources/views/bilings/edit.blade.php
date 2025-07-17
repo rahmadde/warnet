@@ -191,7 +191,7 @@
               <div class="app-kanban">
                 <div class="card">
                   <div class="card-header">
-                    <h1>Edit Data Makanan</h1>
+                    <h1>Edit Data Biling</h1>
                   </div>
                   <div class="card-body">
                     <form action="{{ route('bilings.update', $biling->id) }}" method="POST">
@@ -200,7 +200,7 @@
                             @method('PUT')
                             
                             <div class="form-group m-3">
-                                <label class="font-weight-bold">ZKode Biling</label>
+                                <label class="font-weight-bold">Kode Biling</label>
                                 <input type="text" class="form-control @error('kd_biling') is-invalid @enderror" name="kd_biling" value="{{ old('kd_biling', $biling->kd_biling) }}" placeholder="Masukkan Kode Biling">
                             
                                 <!-- error message untuk title -->
@@ -225,7 +225,15 @@
 
                             <div class="form-group m-3">
                                 <label class="font-weight-bold">Id Member</label>
-                                <input type="text" class="form-control @error('id_member') is-invalid @enderror" name="id_member" value="{{ old('id_member', $biling->id_member) }}" placeholder="Masukkan Id Member">
+                                <select name="id_member" class="form-control @error('id_member') is-invalid @enderror" required>
+                                  <option value="">-- Pilih Member --</option>
+                                  @foreach ($members as $member)
+                                      <option value="{{ $member->id_member }}"
+                                          {{ old('id_member', $biling->id_member) == $member->id_member ? 'selected' : '' }}>
+                                          {{ $member->nm_member }} (ID: {{ $member->id_member }})
+                                      </option>
+                                  @endforeach
+                              </select>
                             
                                 <!-- error message untuk title -->
                                 @error('id_member')

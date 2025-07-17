@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //import Model
 use App\Models\Biling;
 
+use App\Models\Member;
+
 //return type View
 use Illuminate\View\View;
 
@@ -23,7 +25,7 @@ class BilingController extends Controller
     public function index(): View
     {
         //get posts
-        $bilings = Biling::latest()->paginate(10);
+        $bilings = Biling::with('member')->latest()->paginate(10);
 
         //render view with posts
         return view('bilings.index', compact('bilings'));
@@ -36,7 +38,8 @@ class BilingController extends Controller
      */
     public function create(): View
     {
-        return view('bilings.create');
+        $members = Member::all();
+        return view('bilings.create', compact('members'));
     }
 
     /**
@@ -70,9 +73,10 @@ class BilingController extends Controller
     {
         //get post by ID
         $biling = Biling::findOrFail($id);
+        $members = Member::all();
 
         //render view with post
-        return view('bilings.edit', compact('biling'));
+        return view('bilings.edit', compact('biling', 'members'));
     }
 
     /**
