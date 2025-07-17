@@ -21,4 +21,9 @@ class Makanan extends Model
         'jumlah',
         'tgl_pemesanan',
     ];
+
+     public function member()
+{
+     return $this->belongsTo(Member::class, 'id_member', 'id_member');
+}
 }

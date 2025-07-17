@@ -30,4 +30,9 @@ class Member extends Model
     {
         return $this->hasMany(Biling::class, 'id_member', 'id_member');
     }
+    
+    public function makanans()
+    {
+        return $this->hasMany(Biling::class, 'id_member', 'id_member');
+    }
 }

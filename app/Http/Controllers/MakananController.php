@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 //import Model
 use App\Models\Makanan;
 
+use App\Models\Member;
+
 //return type View
 use Illuminate\View\View;
 
@@ -23,7 +25,7 @@ class MakananController extends Controller
     public function index(): View
     {
         //get posts
-        $makanans = Makanan::latest()->paginate(10);
+        $makanans = Makanan::with('member')->latest()->paginate(10);
 
         //render view with posts
         return view('makanans.index', compact('makanans'));
@@ -36,7 +38,8 @@ class MakananController extends Controller
      */
     public function create(): View
     {
-        return view('makanans.create');
+        $members = Member::all();
+        return view('makanans.create', compact('members'));
     }
 
     /**
@@ -71,9 +74,10 @@ class MakananController extends Controller
     {
         //get post by ID
         $makanan = Makanan::findOrFail($id);
+        $members = Member::all();
 
         //render view with post
-        return view('makanans.edit', compact('makanan'));
+        return view('makanans.edit', compact('makanan', 'members'));
     }
 
     /**
