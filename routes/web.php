@@ -35,3 +35,5 @@ Route::resource('/makanans', \App\Http\Controllers\MakananController::class);
 Route::resource('/bilings', \App\Http\Controllers\BilingController::class);
 
 Route::resource('/bookings', \App\Http\Controllers\BookingController::class);
+
+Route::resource('/members', \App\Http\Controllers\MemberController::class);
